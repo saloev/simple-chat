@@ -11,11 +11,11 @@ const router = new VueRouter({
 });
 
 router.afterEach((to, from) => {
-   // scroll to top
-   window.scrollTo({
-    'behavior': 'auto', 
-    'left': 0,
-    'top': 0
+  // scroll to top
+  window.scrollTo({
+    behavior: 'auto',
+    left: 0,
+    top: 0,
   });
 });
 

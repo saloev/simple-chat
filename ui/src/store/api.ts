@@ -1,9 +1,9 @@
 import axios from 'axios';
 import { STORAGE_AUTH_TOKEN, API_SERVER_PREFIX } from '@/config';
 import 'axios-progress-bar/dist/nprogress.css';
-import { APIOptions } from '../types';
-//@ts-ignore
 import { loadProgressBar } from 'axios-progress-bar';
+import { APIOptions } from '../types';
+// @ts-ignore
 
 const axiosWithProgress = axios.create();
 const axiosWithoutProgress = axios.create();
@@ -13,7 +13,7 @@ export function api(cmd: string, options: APIOptions) {
   // по умолчанию - GET-запрос
   options.method = options.method || 'GET';
 
-  console.log('API ' + options.method + ' request "' + cmd + '": ', options);
+  console.log(`API ${options.method} request "${cmd}": `, options);
 
   // с прогрессбаром или нет?
   let axios = null;
@@ -21,15 +21,15 @@ export function api(cmd: string, options: APIOptions) {
   else axios = axiosWithProgress;
 
   // добавляем токен авторизации
-  let authToken = localStorage.getItem(STORAGE_AUTH_TOKEN);
-  if (authToken) axios.defaults.headers.common['Authorization'] = authToken;
+  const authToken = localStorage.getItem(STORAGE_AUTH_TOKEN);
+  if (authToken) axios.defaults.headers.common.Authorization = authToken;
 
-  let params = null,
-    data = null;
+  let params = null;
+  let data = null;
   if (options.method === 'GET') {
     // конкатинируем GET params & query:
     params = options.params || {};
-    let query = options.query || {};
+    const query = options.query || {};
     params = { ...params, ...query };
   } else data = options.params;
 
@@ -37,15 +37,15 @@ export function api(cmd: string, options: APIOptions) {
   let url = '';
   if (cmd.match(/^http:.+/)) {
     url = cmd;
-    console.log('Requesting URL: ' + url);
+    console.log(`Requesting URL: ${url}`);
   } else {
     // По умолчанию обращаемся к API
     url = `${API_SERVER_PREFIX}${cmd}`;
   }
 
   // установка Accept
-  let accepts = ['application/json'];
-  axios.defaults.headers.common['Accept'] = accepts.join(', ');
+  const accepts = ['application/json'];
+  axios.defaults.headers.common.Accept = accepts.join(', ');
 
   const headers = {};
 

@@ -1,6 +1,6 @@
 import { RootState } from '../types';
 
-let state: any = {
+const state: any = {
   // основной объект ответа от БЕ
   response: {},
 
