@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "start": "nodemon",
-    "inspect": "nodemon --ignore db/* --inspect src/app.ts"
+    "star:first": "npm run clear:DB && npm run start",
+    "clear:DB": "node  src/utils/createDBFile.js"
   },
   "author": "",
   "license": "ISC",
