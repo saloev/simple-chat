@@ -1,4 +1,4 @@
-import { UserModel } from "../models";
+import { UserModel } from "../../models/index.js";
 
 /**
  * Attach user to req.currentUser

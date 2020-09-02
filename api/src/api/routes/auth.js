@@ -1,18 +1,20 @@
-import { Router } from 'express';
-import AuthService from '../../services/Auth';
-import middlewares from '../middlewares';
-import { celebrate, Joi } from 'celebrate';
+// const express = require("express");
+import express from "express"
+import AuthService from '../../services/Auth.js';
+import middlewares from '../middlewares/index.js';
+import celebrate from 'celebrate';
+// const celebrate = require('celebrate');
 
-const route = Router();
+const route = express.Router();
 
 export default (app) => {
   app.use('/auth', route);
 
   route.post(
     '/signup',
-    celebrate({
-      body: Joi.object({
-        name: Joi.string().required(),
+    celebrate.celebrate({
+      body: celebrate.Joi.object({
+        name: celebrate.Joi.string().required(),
       }),
     }),
     async (req, res, next) => {

@@ -1,9 +1,9 @@
 import jwt from "jsonwebtoken";
-import config from "../config";
-import db from "../loaders/db";
-import { randomColor } from "../utils";
+import config from "../config/index.js";
+import db from "../loaders/db.js";
+import { randomColor } from "../utils/index.js";
 import { nanoid } from "nanoid";
-import { UserModel } from "../models";
+import { UserModel } from "../models/index.js";
 
 export default class AuthService {
   async SignUp(userInput) {

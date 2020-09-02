@@ -10,7 +10,7 @@ export default {
   /**
    * API port
    */
-  port: parseInt(process.env.PORT, 10),
+  port: parseInt(process.env.API_PORT, 10),
 
   /**
    * path to dataBase

@@ -1,5 +1,5 @@
-import db from "../loaders/db";
-import { randomColor } from "../utils";
+import db from "../loaders/db.js";
+import { randomColor } from "../utils/index.js";
 import { nanoid } from "nanoid";
 
 export default class UserModel {

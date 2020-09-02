@@ -1,8 +1,9 @@
-const low = require("lowdb");
-const FileSync = require("lowdb/adapters/FileSync");
-import config from "../config";
 
-const adapter = new FileSync(config.databaseURL);
+import low from "lowdb";
+import FileSync from "lowdb/adapters/FileSync.js"
+import config from "../config/index.js";
+
+const adapter = new FileSync(`${config.databaseURL}`);
 const db = low(adapter);
 
 export default db;

@@ -1,5 +1,5 @@
 import jwt from "express-jwt";
-import config from "../../config";
+import config from "../../config/index.js";
 
 const getTokenFromHeader = (req) => {
   if (
@@ -16,6 +16,7 @@ const getTokenFromHeader = (req) => {
 const isAuth = jwt({
   secret: config.jwtSecret,
   userProperty: "token",
+  algorithms: ['HS256'],
   getToken: getTokenFromHeader,
 });
 

@@ -1,8 +1,8 @@
 import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
-import routes from "../api";
-import config from "../config";
+import routes from "../api/index.js";
+import config from "../config/index.js";
 
 export default ({ app }) => {
   // Useful if you're behind a reverse proxy (Heroku, Bluemix, AWS ELB, Nginx, etc)
@@ -13,11 +13,6 @@ export default ({ app }) => {
   // Alternate description:
   // Enable Cross Origin Resource Sharing to all origins by default
   app.use(cors());
-
-  // Some sauce that always add since 2014
-  // "Lets you use HTTP verbs such as PUT or DELETE in places where the client doesn't support it."
-  // Maybe not needed anymore ?
-  app.use(require("method-override")());
 
   // Middleware that transforms the raw string of req.body into json
   app.use(bodyParser.json());

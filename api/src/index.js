@@ -1,24 +1,28 @@
-import config from "./config";
+import config from "./config/index.js";
 
 import express from "express";
+import loaders from './loaders/index.js';
 
-async function startServer() {
+function startServer() {
   const app = express();
-  
-  await require("./loaders").default({ expressApp: app });
+  try {
+    loaders({expressApp: app});
 
-  app.listen(config.port, (err) => {
-    if (err) {
-      console.erroe(err);
-      process.exit(1);
-    }
+    app.listen(config.port, (err) => {
+      if (err) {
+        console.erroe(err);
+        process.exit(1);
+      }
 
-    console.log(`
+      console.log(`
     ################################################
     🛡️  Server listening on port: ${config.port} 🛡️ 
     ################################################
   `);
-  });
+    });
+  } catch (e) {
+    console.error(e);
+  }
 }
 
 startServer();

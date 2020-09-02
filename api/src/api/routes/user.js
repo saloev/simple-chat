@@ -1,6 +1,6 @@
-import { Router, Request, Response } from "express";
-import middlewares from "../middlewares";
-const route = Router();
+import express from "express";
+import middlewares from "../middlewares/index.js";
+const route = express.Router();
 
 export default (app) => {
   app.use("/users", route);

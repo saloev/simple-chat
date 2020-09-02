@@ -1,5 +1,1 @@
-import UserModel from "./UserModel";
-
-export default {
-  UserModel,
-};
+export { default as UserModel } from './UserModel.js';
