@@ -1,12 +1,9 @@
 import expressLoader from "./express.js";
 import dbLoader from "./db.js";
+import socket from "./socket.js";
 
-export default async ({ expressApp }) => {
-  // const dbConnection = dbLoader();
-  console.log("✌️ DB loaded"); 
-  
-  // set default value for DB;
-  // dbLoader.defaults({ messages: [], user: {} }).write();
+export default async ({ expressApp, server }) => {
+  socket({ server });
 
   await expressLoader({ app: expressApp });
   console.log("✌️ Express loaded");
