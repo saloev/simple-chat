@@ -33,7 +33,13 @@
 
 ## How run chap app in local evn
 
+### Requirement 
+1. node >= 12
+  
+
 ### Linux
 
 ### Windows
+
+
 
