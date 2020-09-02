@@ -9,7 +9,8 @@ export default class AuthService {
   async SignUp(userInput) {
     try {
       console.log("Creating user db record");
-      const userRecord = await UserModel.create(userInput);
+      const userModel = new UserModel();
+      const userRecord = await userModel.create(userInput);
       const token = this.generateToken(userRecord);
       if (!userRecord) {
         throw new Error("User cannot be created");

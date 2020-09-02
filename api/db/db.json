@@ -1,4 +1,31 @@
 {
   "messages": [],
-  "user": {}
+  "users": [
+    {
+      "id": "LbPrGK4cG2",
+      "name": "sadi",
+      "color": "#001970"
+    },
+    {
+      "id": "0I7W9TWw12",
+      "name": "sadi",
+      "color": "#00b8d4"
+    },
+    {
+      "id": "Nu3YAhnlnt",
+      "name": "sadi",
+      "color": "#0077c2"
+    },
+    {
+      "id": "DA0Fn8lvgn",
+      "name": "sadi",
+      "color": "#80d6ff"
+    }
+  ],
+  "posts": [
+    {
+      "id": 1,
+      "title": "lowdb is awesome"
+    }
+  ]
 }

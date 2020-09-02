@@ -8,7 +8,8 @@ import { UserModel } from "../../models/index.js";
  */
 const attachCurrentUser = async (req, res, next) => {
   try {
-    const userRecord = await UserModel.findById(req.token._id);
+    const userModel =  new UserModel();
+    const userRecord = await userModel.findById(req.token._id);
     if (!userRecord) {
       return res.sendStatus(401);
     }

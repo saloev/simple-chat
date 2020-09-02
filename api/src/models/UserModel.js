@@ -17,8 +17,8 @@ export default class UserModel {
       const userId = db
         .get("users")
         .push({ id, ...user, color: randomColor() })
-        .write().id;
-      const userFromDB = db.get("users").find({ id: userId }).value();
+        .write();
+      const userFromDB = db.get("users").find({ id }).value();
       resove(userFromDB);
     });
 
