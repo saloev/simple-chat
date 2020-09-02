@@ -50,12 +50,21 @@ export default class UserModel {
    */
   async clearMessage(user) {
     try {
-      const user = await this.findByIdDBObj(user.id)
+      const userById = await this.findByIdDBObj(user.id)
         .assgin({ hideMessages: true })
         .write();
-      return user.value();
+      return userById.value();
     } catch (e) {
       throw Error(e);
     }
+  }
+
+  users() {
+    const makeAsync = new Promise((resove) => {
+      const userFromDB = db.get("users").value();
+      resove(userFromDB);
+    });
+
+    return makeAsync;
   }
 }

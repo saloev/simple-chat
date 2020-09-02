@@ -2,32 +2,45 @@ import db from "../loaders/db.js";
 import { randomColor } from "../utils/index.js";
 import { nanoid } from "nanoid";
 
-export default class UserModel {
+export default class ChatModel {
   /**
-   * 
-   * @param {*} id 
+   *
+   * @param {*} id
    */
   findById(id) {
     const makeAsync = new Promise((resove) => {
-      const userFromDB = db.get("messages").find({ id }).value();
-      resove(userFromDB);
+      const message = db.get("messages").find({ id }).value();
+      resove(message);
     });
 
     return makeAsync;
   }
   /**
-   * 
-   * @param {*} param0 
+   *
+   * @param {*} param0
    */
   saveMessage({ timestamp, message, user }) {
     const makeAsync = new Promise((resove) => {
       const id = nanoid(10);
-      const userId = db
-        .get("messages")
+
+      db.get("messages")
         .push({ id, timestamp, message, ...user })
         .write();
+
       const savedMessage = db.get("messages").find({ id }).value();
       resove(savedMessage);
+    });
+
+    return makeAsync;
+  }
+
+  /**
+   * Get all mesages from DB
+   */
+  messages() {
+    const makeAsync = new Promise((resove) => {
+      const messages = db.get("messages").value();
+      resove(messages);
     });
 
     return makeAsync;
