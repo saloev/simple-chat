@@ -38,7 +38,7 @@ const actions = {
    */
   fetchUser(store: any, params: APIOptions) {
     params = params || {};
-    params.action = `/api/users/me`;
+    params.action = `/users/me`;
     params.method = 'POST';
     return actions.request(store, params);
   },

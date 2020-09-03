@@ -6,7 +6,7 @@
     </section>
 
     <section class="auth-page__section  d-flex justify-center flex-column">
-      <h2 class="text-h4">Already registred users</h2>
+      <h2 class="text-h4 pb-4">Already registred users</h2>
       <UserList :items="userList" class="auth-page__user-list" />
     </section>
   </div>

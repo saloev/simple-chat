@@ -29,9 +29,10 @@ router.beforeEach((to, from, next) => {
       .catch(() => {
         // здесь не вызываем next() - его вызовем ниже после получения fetchPage
         console.error('User data is empty, going to auth...');
-        router.push({
-          name: 'auth-page',
-        });
+        if (from.name !== 'auth-page')
+          router.push({
+            name: 'auth-page',
+          });
       });
   } else setLoaded('user');
 

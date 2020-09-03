@@ -9,7 +9,7 @@ export default class UserModel {
    */
   findByIdDBObj(id) {
     const makeAsync = new Promise((resove) => {
-      const userFromDB = db.get("users").find({ id }).value();
+      const userFromDB = db.get("users").find({ id });
       resove(userFromDB);
     });
 

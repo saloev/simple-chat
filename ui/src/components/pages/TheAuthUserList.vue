@@ -18,7 +18,7 @@
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator';
 
-import { dateFormatter } from '@/utils';
+import { formatDate } from '@/utils/date';
 
 interface user {
   id: string;
@@ -33,9 +33,7 @@ export default class TheAuthUserList extends Vue {
 
   get list() {
     return this.items.map((item) => {
-      const date = item.createdDate
-        ? dateFormatter.formatDate(item.createdDate, 'dd MMMM yyyy')
-        : null;
+      const date = item.createdDate ? formatDate(item.createdDate, 'dd MMMM yyyy') : null;
       return { ...item, ...(date ? { date } : {}) };
     });
   }

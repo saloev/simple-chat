@@ -9,7 +9,7 @@ const state: any = {
 
   // сессия пользователя
   session: {
-    user: {},
+    auth: {},
   },
 };
 
