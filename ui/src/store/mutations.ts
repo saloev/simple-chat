@@ -19,7 +19,7 @@ const mutations = {
   },
 
   setSession: (state: any, payload: any) => {
-    if (payload.session) {
+    if (payload && payload.session) {
       if (!state.session) state.session = {};
       state.session.user = payload.session.user;
       if (payload.session.auth) {
@@ -31,6 +31,8 @@ const mutations = {
       }
     } else {
       localStorage.removeItem(STORAGE_AUTH_TOKEN);
+      Vue.set(state.session, 'auth', null);
+      Vue.set(state.session, 'user', null);
       console.log('Auth unset');
     }
   },

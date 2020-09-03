@@ -1,6 +1,6 @@
 <template>
   <router-link to="/">
-    <v-img :src="require(`@/assets/logo.svg`)"></v-img>
+    <v-img :src="require(`@/assets/logo.svg`)" :height="height" contain></v-img>
   </router-link>
 </template>
 
@@ -8,7 +8,9 @@
 import { Vue, Component, Prop } from 'vue-property-decorator';
 
 @Component
-export default class BaseLogo extends Vue {}
+export default class BaseLogo extends Vue {
+  @Prop({ default: '40px', type: String }) height: string;
+}
 </script>
 
 <style lang="scss"></style>
