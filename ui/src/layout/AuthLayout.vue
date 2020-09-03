@@ -1,7 +1,7 @@
 <template>
   <v-app class="layout layout-auth">
     <AuthHeader />
-    <v-main>
+    <v-main class="align-center">
       <v-container fluid>
         <router-view></router-view>
       </v-container>
