@@ -40,7 +40,7 @@ export function api(cmd: string, options: APIOptions) {
     console.log(`Requesting URL: ${url}`);
   } else {
     // По умолчанию обращаемся к API
-    url = `${cmd}`;
+    url = `${API_SERVER_PREFIX}${cmd}`;
   }
 
   // установка Accept

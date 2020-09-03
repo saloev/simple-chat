@@ -3,7 +3,7 @@
     <template v-for="(item) in items">
       <v-list-item :key="item.id">
         <v-list-item-avatar>
-          <BaseAvatar :name="item.name" color="#fefefe">
+          <BaseAvatar :name="item.name" :color="item.color" />
         </v-list-item-avatar>
 
         <v-list-item-content>
@@ -27,10 +27,10 @@ interface user {
 
 @Component
 export default class TheAuthUserList extends Vue {
-  @Prop({ type: Array, required: true }) userList: Array<user>;
+  @Prop({ type: Array, required: true }) items: Array<user>;
 
   get list() {
-    return this.userList.map(item => {
+    return this.items.map(item => {
       return {...item, date: 'Register date ' + item.date}
     });
   }

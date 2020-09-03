@@ -37,7 +37,7 @@ router.beforeEach((to, from, next) => {
 
   // нужно фетчит данные с api ?
   if (to.meta['apiPath']) {
-    let params = Object.assign({}, { name: to.meta.apiPath, params: to.params }, to.meta);
+    let params = Object.assign({ action: to.meta.apiPath, params: to.params }, to.meta);
     store
       .dispatch('fetchPage', params)
       .then(() => {

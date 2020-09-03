@@ -23,9 +23,7 @@ import AuthHeader from '@/components/layout/AuthHeader.vue';
   },
 })
 export default class AuthLayout extends Vue {
-  get userList() {
-    return this.$store.getters.page;
-  }
+
 }
 </script>
 

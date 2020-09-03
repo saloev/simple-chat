@@ -6,16 +6,20 @@ import AuthService from "../../services/Auth.js";
 import UserService from "../../services/User.js";
 
 const route = express.Router();
+const path = "auth";
 
 export default (app) => {
-  app.use("/auth", route);
+  app.use(`/${path}`, route);
 
   route.get("/signup", async (req, res, next) => {
     try {
       const userService = new UserService();
       const users = await userService.users();
-      console.log(users);
-      return res.status(201).json(users);
+      return res.status(201).json({
+        [path]: {
+          users,
+        },
+      });
     } catch (e) {
       console.error("🔥 error: %o", e);
       return next(e);
@@ -33,7 +37,7 @@ export default (app) => {
       try {
         const authServise = new AuthService();
         const { user, token } = await authServise.SignUp(req.body);
-        return res.status(201).json({ user, token });
+        return res.status(201).json({ [path]: { user, token } });
       } catch (e) {
         console.error("🔥 error: %o", e);
         return next(e);

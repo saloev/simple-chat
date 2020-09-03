@@ -36,7 +36,7 @@ export default class UserModel {
       const id = nanoid(10);
       const userId = db
         .get("users")
-        .push({ id, ...user, color: randomColor(), hideMessages: false })
+        .push({ id, ...user, color: randomColor(), hideMessages: false, createdDate: new Date() })
         .write();
       const userFromDB = db.get("users").find({ id }).value();
       resove(userFromDB);

@@ -8,7 +8,7 @@
 import { Vue, Component, Prop } from 'vue-property-decorator';
 
 @Component
-export default class BaseLogo extends Vue {
+export default class BaseAvatar extends Vue {
   @Prop({ type: String, required: true }) name: string;
   @Prop({ type: String, required: true }) color: string;
   @Prop({ type: String, default: '40px' }) width: string;
