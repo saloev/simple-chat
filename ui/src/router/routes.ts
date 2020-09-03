@@ -22,19 +22,20 @@ const routes: Array<RouteConfig> = [
         },
         component: Chat,
       },
+    ],
+  },
+  {
+    path: '/auth',
+    component: AuthLayout,
+    children: [
       {
         path: '/auth',
-        component: AuthLayout,
-        children: [
-          {
-            path: '/auth',
-            name: 'auth-page',
-            meta: {
-              apiPath: '/auth/signup',
-            },
-            component: Auth,
-          },
-        ],
+        name: 'auth-page',
+        meta: {
+          apiPath: '/auth/signup',
+          noAuth: true,
+        },
+        component: Auth,
       },
     ],
   },

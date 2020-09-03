@@ -5,21 +5,19 @@ const mutations = {
   setResponse: (state: any, payload: any) => {
     if (!state.response) state.response = {};
     if (!payload) state.response = {};
-    for (const actionName in payload) {
-      Vue.set(state.response, actionName, payload[actionName]);
-    }
+    Object.keys(payload).forEach((key) => {
+      Vue.set(state.response, key, payload[key]);
+    });
   },
 
   setPage: (state: any, payload: any) => {
-    if (payload.page) {
-      for (const actionName in payload.page) {
-        Vue.set(state.page, actionName, payload.page[actionName]);
-      }
-    }
-
-    if (payload.user) {
-    }
+    if (!state.page) state.page = {};
+    if (!payload) state.page = {};
+    Object.keys(payload).forEach((key) => {
+      Vue.set(state.page, key, payload[key]);
+    });
   },
+
   setSession: (state: any, payload: any) => {
     if (payload.session) {
       if (!state.session) state.session = {};

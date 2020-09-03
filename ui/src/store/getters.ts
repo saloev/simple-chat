@@ -1,8 +1,8 @@
-import { Pages } from '../types';
+import { RootState, Pages } from '../types';
 
 const getters = {
-  page(state: Pages) {
-    return state;
+  page(state: RootState) {
+    return state.response;
   },
 };
 export default getters;

@@ -1,6 +1,8 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+import { RawLocation } from 'vue-router';
 import routes from './routes';
+import store from '@/store';
 
 Vue.use(VueRouter);
 
@@ -8,6 +10,43 @@ const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes,
+});
+
+router.beforeEach((to, from, next) => {
+  const loaded: { user: Boolean; page: Boolean } = { user: false, page: false };
+  const setLoaded = (mode: 'user' | 'page') => {
+    loaded[mode] = true;
+    if (loaded.user && loaded.page) next();
+  };
+  console.log(to.meta);
+  // Нужно проверить авторизацию ?
+  if (!to.meta['noAuth']) {
+    store
+      .dispatch('fetchUser')
+      .then(() => {
+        setLoaded('user');
+      })
+      .catch(() => {
+        // здесь не вызываем next() - его вызовем ниже после получения fetchPage
+        console.error('User data is empty, going to auth...');
+        router.push({
+          name: 'auth-page',
+        });
+      });
+  } else setLoaded('user');
+
+  // нужно фетчит данные с api ?
+  if (to.meta['apiPath']) {
+    let params = Object.assign({}, { name: to.meta.apiPath, params: to.params }, to.meta);
+    store
+      .dispatch('fetchPage', params)
+      .then(() => {
+        setLoaded('page');
+      })
+      .catch((err: any) => {
+        console.error('Could not fetch API data: ', err);
+      });
+  } else setLoaded('page');
 });
 
 router.afterEach((to, from) => {

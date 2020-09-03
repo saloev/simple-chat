@@ -1,9 +1,9 @@
 import axios from 'axios';
 import { STORAGE_AUTH_TOKEN, API_SERVER_PREFIX } from '@/config';
 import 'axios-progress-bar/dist/nprogress.css';
+// @ts-ignore
 import { loadProgressBar } from 'axios-progress-bar';
 import { APIOptions } from '../types';
-// @ts-ignore
 
 const axiosWithProgress = axios.create();
 const axiosWithoutProgress = axios.create();
@@ -40,12 +40,13 @@ export function api(cmd: string, options: APIOptions) {
     console.log(`Requesting URL: ${url}`);
   } else {
     // По умолчанию обращаемся к API
-    url = `${API_SERVER_PREFIX}${cmd}`;
+    url = `${cmd}`;
   }
 
   // установка Accept
   const accepts = ['application/json'];
   axios.defaults.headers.common.Accept = accepts.join(', ');
+  console.log('url', cmd);
 
   const headers = {};
 
@@ -72,9 +73,8 @@ export function api(cmd: string, options: APIOptions) {
         if (response.data.code) throw { error: response.data.error, code: response.data.code };
         else throw response.data.error;
       }
-      if (!response.data || !response.data.result) throw 'No result in response data object';
 
-      return response.data.result;
+      return response.data;
     });
 }
 

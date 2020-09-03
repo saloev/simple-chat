@@ -13,4 +13,13 @@ export default (app) => {
       return res.json({ user: req.currentUser }).status(200);
     }
   );
+
+  route.post(
+    "/me",
+    middlewares.isAuth,
+    middlewares.attachCurrentUser,
+    (req, res) => {
+      return res.json({ user: req.currentUser }).status(200);
+    }
+  );
 };

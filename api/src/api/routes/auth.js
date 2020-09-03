@@ -13,7 +13,8 @@ export default (app) => {
   route.get("/signup", async (req, res, next) => {
     try {
       const userService = new UserService();
-      const users= await userService.users();
+      const users = await userService.users();
+      console.log(users);
       return res.status(201).json(users);
     } catch (e) {
       console.error("🔥 error: %o", e);

@@ -1,6 +1,6 @@
 import { Store } from 'vuex';
 
-import { API_DEFAULT_ACTION } from '@/config';
+import { API_DEFAULT_ACTION, API_SERVER_PREFIX } from '@/config';
 import { api } from './api';
 import { APIOptions, RootState } from '../types';
 
@@ -26,6 +26,19 @@ const actions = {
    */
   post(store: any, params: APIOptions) {
     params = params || {};
+    params.method = 'POST';
+    return actions.request(store, params);
+  },
+
+ /**
+   * Запрос на проверку авторизации пользователя
+   * @param store
+   * @param params
+   * @returns {Q.Promise<any> | * | Q.Promise<T | never> | PromiseLike<T | never> | Promise<T | never>}
+   */
+  fetchUser(store: any, params: APIOptions) {
+    params = params || {};
+    params.action = `/api/users/me`;
     params.method = 'POST';
     return actions.request(store, params);
   },
