@@ -1,6 +1,6 @@
 <template>
-  <div class="base-avatar" :style="inlineStyle">
-    <p>{{ firstLetters }}</p>
+  <div class="base-avatar d-flex justify-center align-center" :style="inlineStyle">
+    <p class="ma-0">{{ firstLetters }}</p>
   </div>
 </template>
 

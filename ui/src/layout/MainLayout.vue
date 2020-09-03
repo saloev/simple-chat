@@ -1,15 +1,26 @@
 <template>
-  <div class="layout layout-main">
-    <v-main>
-      <router-view></router-view>
+  <v-app class="layout layout-main">
+    <MainHeader />
+    <v-main class="align-center">
+      <v-container fluid>
+        <router-view></router-view>
+      </v-container>
     </v-main>
-  </div>
+    <MainFooter />
+  </v-app>
 </template>
 
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator';
 
-@Component
+import MainHeader from '@/components/layout/MainHeader.vue';
+import MainFooter from '@/components/layout/MainFooter.vue';
+@Component({
+  components: {
+    MainHeader,
+    MainFooter,
+  },
+})
 export default class MainLayout extends Vue {}
 </script>
 

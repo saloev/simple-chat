@@ -20,7 +20,6 @@ router.beforeEach((to, from, next) => {
     loaded[mode] = true;
     if (loaded.user && loaded.page) next();
   };
-  console.log(to.meta);
   // Нужно проверить авторизацию ?
   if (!to.meta['noAuth']) {
     store
@@ -32,7 +31,6 @@ router.beforeEach((to, from, next) => {
             auth: localStorage.getItem(STORAGE_AUTH_TOKEN),
           },
         });
-        console.log(user, store.state);
         setLoaded('user');
       })
       .catch(() => {
