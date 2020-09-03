@@ -4,6 +4,8 @@ import { RawLocation } from 'vue-router';
 import routes from './routes';
 import store from '@/store';
 
+import { STORAGE_AUTH_TOKEN } from '../config';
+
 Vue.use(VueRouter);
 
 const router = new VueRouter({
@@ -23,7 +25,14 @@ router.beforeEach((to, from, next) => {
   if (!to.meta['noAuth']) {
     store
       .dispatch('fetchUser')
-      .then(() => {
+      .then(({ users: { user } }) => {
+        store.commit('setSession', {
+          session: {
+            user,
+            auth: localStorage.getItem(STORAGE_AUTH_TOKEN),
+          },
+        });
+        console.log(user, store.state);
         setLoaded('user');
       })
       .catch(() => {
