@@ -1,5 +1,8 @@
 import express from "express";
+import celebrate from "celebrate";
+
 import middlewares from "../middlewares/index.js";
+
 const route = express.Router();
 const path = "users";
 

@@ -19,12 +19,12 @@ export default class ChatModel {
    *
    * @param {*} param0
    */
-  saveMessage({ timestamp, message, user }) {
+  saveMessage({ message, user }) {
     const makeAsync = new Promise((resove) => {
       const id = nanoid(10);
 
       db.get("messages")
-        .push({ id, timestamp, message, ...user })
+        .push({ id, message, ...user, time: new Date() })
         .write();
 
       const savedMessage = db.get("messages").find({ id }).value();
