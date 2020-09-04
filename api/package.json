@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "start": "nodemon",
-    "star:first": "npm run clear:DB && npm run start",
+    "start:first": "npm run clear:DB && npm run start",
     "clear:DB": "node  src/utils/createDBFile.js"
   },
   "author": "",
