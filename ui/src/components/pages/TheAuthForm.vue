@@ -1,12 +1,12 @@
 <template>
-  <v-form ref="form" lazy-validation v-model="valid">
+  <v-form ref="form" lazy-validation v-model="valid" @submit.prevent="submit">
     <v-text-field
       v-model="name"
       :rules="nameRules"
       label="Name"
       required
     ></v-text-field>
-    <v-btn :disabled="!valid" color="success" class="mr-4" @click="submit"> Login to chat </v-btn>
+    <v-btn :disabled="!valid" color="success" class="mr-4" type="submit"> Login to chat </v-btn>
   </v-form>
 </template>
 

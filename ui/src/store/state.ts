@@ -11,6 +11,9 @@ const state: any = {
   session: {
     auth: {},
   },
+
+  //Сообщение из чата
+  messages: [],
 };
 
 export default state;

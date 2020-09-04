@@ -2,6 +2,9 @@ import Vue from 'vue';
 import { STORAGE_AUTH_TOKEN } from '../config';
 
 const mutations = {
+  /**
+   *
+   */
   setResponse: (state: any, payload: any) => {
     if (!state.response) state.response = {};
     if (!payload) state.response = {};
@@ -10,6 +13,9 @@ const mutations = {
     });
   },
 
+  /**
+   *
+   */
   setPage: (state: any, payload: any) => {
     if (!state.page) state.page = {};
     if (!payload) state.page = {};
@@ -18,6 +24,9 @@ const mutations = {
     });
   },
 
+  /**
+   *
+   */
   setSession: (state: any, payload: any) => {
     if (payload && payload.session) {
       if (!state.session) state.session = {};
@@ -35,6 +44,15 @@ const mutations = {
       Vue.set(state.session, 'user', null);
       console.log('Auth unset');
     }
+  },
+
+  /**
+   *
+   * @param state
+   * @param payload
+   */
+  setState(state: any, {key, value}: any) {
+    Vue.set(state, key, value);
   },
 };
 

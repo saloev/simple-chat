@@ -1,12 +1,12 @@
 <template>
   <div class="chat-messages">
-    <ol class="chat-messages__list ma-0 pa-0">
-      <li v-for="item in list" :key="item.id" class="chat-messages__item mb-5">
+    <ol class="chat-messages__list ma-0 pa-0" ref="messages">
+      <li v-for="item in list" :key="item.id" class="chat-messages__item" ref="messageItem">
         <Message :item="item" :itself="item.itself" />
       </li>
     </ol>
 
-    <SendForm class="chat-messages__form" />
+    <SendForm class="chat-messages__form" @send-message="sendMessage" />
   </div>
 </template>
 
@@ -33,6 +33,14 @@ export default class ChatMessages extends Vue {
     time: String | Date;
     id: string | number;
   }>;
+
+  sendMessage(message) {
+    const messagesEl: any = this.$refs.messages;
+    if (messagesEl) {
+      messagesEl.scrollTop = messagesEl.scrollHeight;
+    }
+    this.$emit('send-message', message);
+  }
 }
 </script>
 
@@ -43,8 +51,12 @@ export default class ChatMessages extends Vue {
 
   &__list {
     list-style: none;
-    max-height: calc(100vh - 500px);
+    max-height: 800px;
     overflow-y: auto;
+  }
+
+  &__item {
+    padding: 20px;
   }
 
   &__form {

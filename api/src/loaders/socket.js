@@ -5,22 +5,22 @@ export default ({ server }) => {
   const io = socket(server);
   const chatModel = new ChatModel();
 
-  io.on("connection", () => {
+  io.on("connection", (soketIO) => {
     console.log("SOCKET connected");
 
-    socket.on("chat message", (data) => {
-      chatModel.saveMessage(data).then(() => {
-        io.emit("chat message", data);
+    soketIO.on("NEW_MESSAGE", (data) => {
+      chatModel.saveMessage(data).then((res) => {
+        io.emit("NEW_MESSAGE", res);
       });
     });
 
-    socket.on("clear messages", (data) => {
+    soketIO.on("CLEAR_MESSAGES", (data) => {
       chatModel.clearMessages().then(() => {
-        io.emit("clear messages", data);
+        io.emit("CLEAR_MESSAGES", data);
       });
     });
 
-    socket.on("disconnect", () => {
+    soketIO.on("disconnect", () => {
       console.log("user disconnected");
     });
   });

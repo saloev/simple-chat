@@ -10,6 +10,8 @@ export interface RootState {
   response: {} | Pages;
 
   session: Session;
+
+  messages: Array<Message>;
 }
 
 export interface Pages {
@@ -21,6 +23,7 @@ interface Message {
   name: string;
   message: string;
   color: string;
+  userId: string;
 }
 
 interface Session {

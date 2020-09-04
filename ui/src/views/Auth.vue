@@ -5,10 +5,13 @@
       <TheAuthForm @submit="submit" />
     </section>
 
-    <section class="auth-page__section  d-flex justify-center flex-column">
+    <section class="auth-page__section  d-flex justify-center flex-column mb-4">
       <h2 class="text-h4 pb-4">Already registred users</h2>
       <UserList :items="userList" class="auth-page__user-list" />
     </section>
+
+    <ChatClearMessage @clear-messages="clearMessages"/>
+
   </div>
 </template>
 
@@ -17,11 +20,13 @@ import { Vue, Component, Prop } from 'vue-property-decorator';
 
 import UserList from '@/components/pages/TheAuthUserList.vue';
 import TheAuthForm from '@/components/pages/TheAuthForm.vue';
+import ChatClearMessage from '@/components/chat/ChatClearMessage.vue';
 
 @Component({
   components: {
     UserList,
     TheAuthForm,
+    ChatClearMessage,
   },
 })
 export default class Auth extends Vue {
@@ -53,6 +58,14 @@ export default class Auth extends Vue {
       .catch((e) => {
         console.error(e);
       });
+  }
+
+  clearMessages() {
+    this.$socket.emit('CLEAR_MESSAGES');
+  }
+
+  mounted() {
+    console.log(this.$socket);
   }
 }
 </script>

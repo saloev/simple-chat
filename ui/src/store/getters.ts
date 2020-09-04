@@ -7,5 +7,8 @@ const getters = {
   user(state: RootState) {
     return state.session.user;
   },
+  messages(state: RootState) {
+    return state.messages;
+  },
 };
 export default getters;

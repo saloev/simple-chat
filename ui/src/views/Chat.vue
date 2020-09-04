@@ -1,7 +1,7 @@
 <template>
   <div class="text-center">
     <h1 class="text-h1 mb-8">Welcome to chat :)</h1>
-    <TheChat :list="messages" />
+    <TheChat :list="messages" @send-message="sendMessage" />
   </div>
 </template>
 
@@ -25,10 +25,23 @@ export default class Chat extends Vue {
   }
 
   get messages() {
-    return this.pageData.messages.map((item) => {
+    return this.$store.getters.messages.map((item) => {
       if (item.userId === this.currentUser.id) item.itself = true;
       return item;
     });
+  }
+
+  sendMessage(data: { message: string }) {
+    this.$socket.emit('NEW_MESSAGE', {
+      ...data,
+      userId: this.currentUser.id,
+      color: this.currentUser.color,
+      name: this.currentUser.name,
+    });
+  }
+
+  mounted() {
+    this.$store.commit('setState', { key: 'messages', value: this.pageData.messages });
   }
 }
 </script>

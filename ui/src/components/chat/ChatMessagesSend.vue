@@ -1,15 +1,14 @@
 <template>
-  <v-form ref="form" lazy-validation v-model="form" class="chat__form chat-form">
+  <v-form ref="form" lazy-validation class="chat__form chat-form" @submit.prevent="submit">
     <v-textarea
-      @keyup.enter="submit"
       required
       v-model="message"
       class="mx-2"
       label="say hi"
       rows="1"
-      :rules="messageRules"
+      @keydown.enter="submit"
     ></v-textarea>
-    <v-btn class="mx-2" fab @click="submit">
+    <v-btn class="mx-2" fab type="submit">
       <v-icon>mdi-send</v-icon>
     </v-btn>
   </v-form>
@@ -21,18 +20,11 @@ import { Vue, Component, Prop } from 'vue-property-decorator';
 @Component
 export default class ChatMessagesSend extends Vue {
   message: string = '';
-  messageRules: any = [(v) => !!v || 'Message is required'];
-  form: boolean = false;
-
-  validate() {
-    //@ts-ignore
-    return this.$refs.form.validate();
-  }
 
   submit() {
-    const isValid = this.validate();
-    if (!isValid) return;
-    this.$emit('sendMessage', { message: this.message });
+    if (!this.message) return;
+    this.$emit('send-message', { message: this.message });
+    this.message = '';
   }
 }
 </script>

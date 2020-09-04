@@ -57,7 +57,7 @@ export default class ChatMessage extends Vue {
   width: 90%;
   display: grid;
   grid-template-columns: 40px 1fr;
-  grid-gap: 15px;
+  grid-column-gap: 15px;
   align-items: center;
 
   &__content {

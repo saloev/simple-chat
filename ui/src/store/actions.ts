@@ -30,7 +30,7 @@ const actions = {
     return actions.request(store, params);
   },
 
- /**
+  /**
    * Запрос на проверку авторизации пользователя
    * @param store
    * @param params
@@ -55,6 +55,18 @@ const actions = {
     return actions.request(store, params).then((result) => {
       store.commit('setPage', result);
     });
+  },
+
+  /**
+   * Для сокетов
+   */
+  SOCKET_NEW_MESSAGE(store: any, message: any) {
+    const messages = store.state.messages;
+    store.commit('setState', { key: 'messages', value: [...messages, message] });
+  },
+
+  SOCKET_CLEAR_MESSAGES(store: any, params: any) {
+    store.commit('setState', { key: 'messages', value: [] });
   },
 };
 

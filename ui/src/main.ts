@@ -7,6 +7,8 @@ import store from './store';
  * Plugins
  */
 import vuetify from './plugins/vuetify';
+import './plugins/socket';
+
 // global components
 import './plugins/base-components';
 

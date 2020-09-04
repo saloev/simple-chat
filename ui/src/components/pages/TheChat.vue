@@ -1,6 +1,6 @@
 <template>
-  <div class="chat-page__chat-wrap elevation-8 pa-8">
-    <Messages :list="list" />
+  <div class="chat-page__chat-wrap elevation-8">
+    <Messages :list="list" @send-message="(data) => $emit('send-message', data)" />
   </div>
 </template>
 
