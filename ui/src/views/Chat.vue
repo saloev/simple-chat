@@ -1,6 +1,6 @@
 <template>
   <div class="text-center">
-    <h1 class="text-h1 mb-8">Welcome to chat :)</h1>
+    <h1 class="text-h4 text-md-h1 mb-4 mb-md-8">Welcome to chat :)</h1>
     <TheChat :list="messages" @send-message="sendMessage" />
   </div>
 </template>

@@ -1,6 +1,6 @@
 <template>
   <div class="chat-messages">
-    <ol class="chat-messages__list ma-0 pa-0" ref="messages">
+    <ol class="chat-messages__list ma-0 pa-0" ref="messages" :style="`height: ${height}`">
       <li v-for="item in list" :key="item.id" class="chat-messages__item" ref="messageItem">
         <Message :item="item" :itself="item.itself" />
       </li>
@@ -41,18 +41,25 @@ export default class ChatMessages extends Vue {
     }
     this.$emit('send-message', message);
   }
+
+  get height() {
+    //@ts-ignore
+    if (this.$vuetify.breakpoint.mdAndUp) return `calc(100vh - 500px)`;
+    return `calc(100vh - 310px)`;
+  }
 }
 </script>
 
 <style lang="scss">
 .chat-messages {
   position: relative;
-  padding-bottom: 120px;
+  padding-bottom: 85px;
 
   &__list {
-    list-style: none;
-    max-height: 800px;
     overflow-y: auto;
+    min-height: 275px;
+
+    list-style: none;
   }
 
   &__item {

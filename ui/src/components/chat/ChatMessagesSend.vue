@@ -6,6 +6,7 @@
       class="mx-2"
       label="say hi"
       rows="1"
+      no-resize
       @keydown.enter="submit"
     ></v-textarea>
     <v-btn class="mx-2" fab type="submit">

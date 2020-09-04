@@ -66,6 +66,7 @@ export default class ChatMessage extends Vue {
 
   &__text {
     padding: 12px;
+    padding-bottom: 25px;
     border-radius: 16px;
   }
 
