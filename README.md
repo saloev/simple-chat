@@ -51,7 +51,12 @@
 ### Linux/Winwows
 1. clone repo and run below command in CLI
 ```bash
-npm run dev
+npm run api
+npm run ui
+```
+2. Open in browser localhost with port 8080 
+```
+localhost:8080
 ```
 
 ### TODO:!
@@ -59,6 +64,7 @@ npm run dev
 2. Remove type 'any' from whole code 
 3. Add more comments
 4. Fix: linting errors
+5. Setup build 
 
 
 
