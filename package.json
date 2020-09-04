@@ -1,0 +1,11 @@
+{
+  "name": "simple-chat",
+  "version": "1.0.0",
+  "description": "[] Поле ввода имени\r [] Список введенных ранее имен\r [] Кнопка отчистить историю сообщений(в самом низу).\r [] После ввода имени и нажатия ENTER или выбора имени из списка открывается 2 экран.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "cd api && npm start && cd ui npm run serve"
+  },
+  "author": "",
+  "license": "ISC"
+}

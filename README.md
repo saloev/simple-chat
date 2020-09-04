@@ -1,6 +1,6 @@
 # Simple chat -- interview task
 
-## Specification
+## Specification - interview
 
 ### Первый экран:
 [] Поле ввода имени
@@ -31,15 +31,34 @@
 [] Использование Vue
 [] Чистый код с комментариями
 
+## Features
+1. Simple Chat 
+2. Authtorithation(login/logout)
+3. save chat messages to DB
+
+## Using 
+1. API:
+   1. Nodejs, Express, Socket.io
+2. UI:
+   1. Vue, Vuex, Vue Router, Vuetify, vue-socket-io
+
 ## How run chap app in local evn
 
 ### Requirement 
 1. node >= 12
   
 
-### Linux
+### Linux/Winwows
+1. clone repo and run below command in CLI
+```bash
+npm run dev
+```
 
-### Windows
+### TODO:!
+1. Rewrite api from native js to typescript
+2. Remove type 'any' from whole code 
+3. Add more comments
+4. Fix: linting errors
 
 
 
