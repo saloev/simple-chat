@@ -29,7 +29,7 @@ interface user {
 
 @Component
 export default class TheAuthUserList extends Vue {
-  @Prop({ type: Array, required: true }) items: Array<user>;
+  @Prop({ type: Array, required: true }) items!: Array<user>;
 
   get list() {
     return this.items.map((item) => {

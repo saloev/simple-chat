@@ -17,7 +17,7 @@ import { Vue, Component, Prop } from 'vue-property-decorator';
 export default class TheAuthForm extends Vue {
   name: string = '';
   nameRules: any = [
-    (v) => !!v || 'Name is required',
+    (v: string | null) => !!v || 'Name is required',
   ];
   valid: boolean = false;
 

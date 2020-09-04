@@ -25,7 +25,7 @@ export default class Chat extends Vue {
   }
 
   get messages() {
-    return this.$store.getters.messages.map((item) => {
+    return this.$store.getters.messages.map((item: any) => {
       if (item.userId === this.currentUser.id) item.itself = true;
       return item;
     });

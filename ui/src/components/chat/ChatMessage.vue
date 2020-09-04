@@ -19,13 +19,13 @@ import { hex2rgba } from '@/utils/hex2rgba';
 
 @Component
 export default class ChatMessage extends Vue {
-  @Prop({ type: Object, required: true }) item: {
+  @Prop({ type: Object, required: true }) item!: {
     message: string;
     name: string;
     color: string;
     time: string | Date;
   };
-  @Prop({ type: Boolean, default: false }) itself: boolean;
+  @Prop({ type: Boolean, default: false }) itself?: boolean;
 
   get normalizedTime() {
     return {

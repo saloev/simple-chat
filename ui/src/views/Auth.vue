@@ -38,7 +38,7 @@ export default class Auth extends Vue {
     return this.pageData.users;
   }
 
-  submit({ name }) {
+  submit({ name }: any) {
     this.$store
       .dispatch('post', {
         action: '/auth/signup/',

@@ -17,7 +17,7 @@ import { formatDate } from '@/utils/date';
   },
 })
 export default class ChatMessages extends Vue {
-  @Prop({ type: Array, required: true }) list: Array<{
+  @Prop({ type: Array, required: true }) list!: Array<{
     name: string;
     color: string;
     itself: boolean;

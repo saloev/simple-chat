@@ -14,7 +14,7 @@
 import { Vue, Component, Prop } from 'vue-property-decorator';
 
 import Message from './ChatMessage.vue';
-import SendForm from './ChatMessagesSend';
+import SendForm from './ChatMessagesSend.vue';
 
 import { formatDate } from '@/utils/date';
 
@@ -25,7 +25,7 @@ import { formatDate } from '@/utils/date';
   },
 })
 export default class ChatMessages extends Vue {
-  @Prop({ type: Array, required: true }) list: Array<{
+  @Prop({ type: Array, required: true }) list!: Array<{
     name: string;
     color: string;
     itself: boolean;
@@ -34,7 +34,7 @@ export default class ChatMessages extends Vue {
     id: string | number;
   }>;
 
-  sendMessage(message) {
+  sendMessage(message: any) {
     const messagesEl: any = this.$refs.messages;
     if (messagesEl) {
       messagesEl.scrollTop = messagesEl.scrollHeight;

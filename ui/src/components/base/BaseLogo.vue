@@ -9,7 +9,7 @@ import { Vue, Component, Prop } from 'vue-property-decorator';
 
 @Component
 export default class BaseLogo extends Vue {
-  @Prop({ default: '40px', type: String }) height: string;
+  @Prop({ default: '40px', type: String }) height?: string;
 }
 </script>
 
