@@ -1,6 +1,6 @@
-# Simple chat -- interview task
+# Simple chat
 
-## Specification - interview
+## Specification
 
 ### Первый экран:
 - [x] Поле ввода имени
